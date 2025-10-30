@@ -1,5 +1,6 @@
 import {
 	defaultResource,
+	type Resource,
 	resourceFromAttributes,
 } from '@opentelemetry/resources'
 import {
@@ -46,7 +47,7 @@ const envAttributesMap: Record<string, string[]> = {
 	],
 }
 
-export const envAttributes = () => {
+export const envAttributes = (): Record<string, string> => {
 	const attr: Record<string, string> = {}
 	for (const key in envAttributesMap) {
 		const value = envAttributesMap[key] || []
@@ -59,7 +60,7 @@ export const envAttributes = () => {
 	return attr
 }
 
-export const newResource = () => {
+export const newResource = (): Resource => {
 	const resource = defaultResource()
 	return resource.merge(resourceFromAttributes(envAttributes()))
 }

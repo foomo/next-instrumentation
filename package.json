@@ -1,13 +1,27 @@
 {
 	"name": "@foomo/next-instrumentation",
 	"version": "0.1.10",
+	"license": "MIT",
+	"homepage": "https://github.com/foomo/next-instrumentation#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/foomo/next-instrumentation.git"
+	},
+	"bugs": {
+		"url": "https://github.com/foomo/next-instrumentation/issues"
+	},
+	"keywords": [
+		"foomo",
+		"next"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"type": "module",
 	"files": [
 		"dist",
 		"LICENSE"
 	],
-	"module": "./dist/client/index.js",
-	"types": "./dist/client/index.d.ts",
 	"exports": {
 		".": {
 			"edge": {
@@ -42,29 +56,16 @@
 		},
 		"./package.json": "./package.json"
 	},
-	"license": "MIT",
-	"homepage": "https://github.com/foomo/next-instrumentation#readme",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/foomo/next-instrumentation.git"
-	},
-	"bugs": {
-		"url": "https://github.com/foomo/next-instrumentation/issues"
-	},
-	"keywords": [
-		"foomo",
-		"next"
-	],
-	"publishConfig": {
-		"access": "public"
-	},
 	"scripts": {
 		"build": "bunup",
 		"dev": "bunup --watch",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write .",
 		"lint:fix:unsafe": "biome check --write --unsafe ./",
-		"prepublishOnly": "bun run lint && bun run type-check && bun run test && bun run build && bumpp --no-push",
+		"check": "bun run lint && bun run type-check && bun run test",
+		"prepublishOnly": "bun run check && bun run build",
+		"prereleasehOnly": "bun run check && bun run build",
+		"release": "bumpp --no-push",
 		"test": "bun test",
 		"test:coverage": "bun test --coverage",
 		"test:watch": "bun test --watch",
