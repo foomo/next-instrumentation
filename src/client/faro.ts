@@ -4,16 +4,16 @@ import {
 	getWebInstrumentations,
 	initializeFaro,
 	LogLevel,
-} from '@grafana/faro-web-sdk';
-import { TracingInstrumentation } from '@grafana/faro-web-tracing';
-import { useEffect } from 'react';
+} from '@grafana/faro-web-sdk'
+import { TracingInstrumentation } from '@grafana/faro-web-tracing'
+import { useEffect } from 'react'
 
 export interface Faro {
-	config?: BrowserConfig;
-	enabled: boolean;
+	config?: BrowserConfig
+	enabled: boolean
 }
 
-export const useFaro = ({ config, enabled }: Faro) => {
+export const useFaro = ({ config, enabled }: Faro): void => {
 	useEffect(() => {
 		if (enabled && !faro.api) {
 			try {
@@ -27,10 +27,10 @@ export const useFaro = ({ config, enabled }: Faro) => {
 						captureConsoleDisabledLevels: [LogLevel.DEBUG, LogLevel.TRACE],
 					},
 					...config,
-				} as BrowserConfig);
+				} as BrowserConfig)
 			} catch (e) {
-				console.error('Failed to initialize Faro', e);
+				console.error('Failed to initialize Faro', e)
 			}
 		}
-	}, [config, enabled]);
-};
+	}, [config, enabled])
+}

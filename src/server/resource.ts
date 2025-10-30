@@ -1,7 +1,7 @@
 import {
 	defaultResource,
 	resourceFromAttributes,
-} from '@opentelemetry/resources';
+} from '@opentelemetry/resources'
 import {
 	ATTR_VCS_REF_BASE_NAME,
 	ATTR_VCS_REF_BASE_REVISION,
@@ -11,7 +11,7 @@ import {
 	ATTR_VCS_REF_HEAD_TYPE,
 	ATTR_VCS_REPOSITORY_NAME,
 	ATTR_VCS_REPOSITORY_URL_FULL,
-} from '@opentelemetry/semantic-conventions/incubating';
+} from '@opentelemetry/semantic-conventions/incubating'
 
 const envAttributesMap: Record<string, string[]> = {
 	[ATTR_VCS_REPOSITORY_NAME]: [
@@ -44,22 +44,22 @@ const envAttributesMap: Record<string, string[]> = {
 		'GIT_REPOSITORY_PATH',
 		'OTEL_VCS_ROOT_PATH',
 	],
-};
+}
 
 export const envAttributes = () => {
-	const attr: Record<string, string> = {};
+	const attr: Record<string, string> = {}
 	for (const key in envAttributesMap) {
-		const value = envAttributesMap[key] || [];
+		const value = envAttributesMap[key] || []
 		for (const v of value) {
 			if (process.env[v]) {
-				attr[key] = process.env[v];
+				attr[key] = process.env[v]
 			}
 		}
 	}
-	return attr;
-};
+	return attr
+}
 
 export const newResource = () => {
-	const resource = defaultResource();
-	return resource.merge(resourceFromAttributes(envAttributes()));
-};
+	const resource = defaultResource()
+	return resource.merge(resourceFromAttributes(envAttributes()))
+}

@@ -1,1 +1,1 @@
-export * from './faro';
+export * from './faro'
