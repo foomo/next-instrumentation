@@ -1,6 +1,6 @@
 {
 	"name": "@foomo/next-instrumentation",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
@@ -41,7 +41,7 @@
 		"LICENSE"
 	],
 	"scripts": {
-		"build": "bun run clean && bun run build:esm && bun run build:cjs && bun run build:types",
+		"build": "bun run clean && bun run build:esm && bun run build:types",
 		"build:esm": "bun build ./src/index.ts ./src/faro.ts --outdir=./dist --format=esm --packages=external --target=node --splitting",
 		"build:cjs": "bun build ./src/index.ts ./src/faro.ts --outdir=./dist --format=cjs --packages=external --target=node --outfile-extension=.cjs=.cjs",
 		"build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
