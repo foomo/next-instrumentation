@@ -23,36 +23,17 @@
 		"LICENSE"
 	],
 	"exports": {
-		".": {
-			"edge": {
+		"./client": {
+			"import": {
 				"types": "./dist/client/index.d.ts",
 				"default": "./dist/client/index.js"
-			},
-			"edge-light": {
-				"types": "./dist/client/index.d.ts",
-				"default": "./dist/client/index.js"
-			},
-			"browser": {
-				"types": "./dist/client/index.d.ts",
-				"default": "./dist/client/index.js"
-			},
-			"worker": {
-				"types": "./dist/client/index.d.ts",
-				"default": "./dist/client/index.js"
-			},
-			"workerd": {
-				"types": "./dist/client/index.d.ts",
-				"default": "./dist/client/index.js"
-			},
+			}
+		},
+		"./server": {
 			"import": {
 				"types": "./dist/server/index.d.ts",
 				"default": "./dist/server/index.js"
-			},
-			"node": {
-				"types": "./dist/server/index.d.ts",
-				"default": "./dist/server/index.js"
-			},
-			"default": "./dist/server/index.js"
+			}
 		},
 		"./package.json": "./package.json"
 	},
