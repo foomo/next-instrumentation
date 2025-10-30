@@ -1,7 +1,15 @@
 {
 	"name": "@foomo/next-instrumentation",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/foomo/next-instrumentation.git"
+	},
+	"bugs": {
+		"url": "https://github.com/foomo/next-instrumentation/issues"
+	},
+	"homepage": "https://github.com/foomo/next-instrumentation#readme",
 	"keywords": [
 		"foomo",
 		"next"
@@ -9,22 +17,35 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"files": [
-		"dist"
-	],
 	"type": "module",
-	"module": "distindex.js",
-	"types": "dist/index.d.ts",
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
+			"types": "./dist/index.d.ts",
 			"import": "./dist/index.js",
-			"types": "./dist/index.js"
-		}
+			"require": "./dist/index.cjs"
+		},
+		"./faro": {
+			"types": "./dist/faro.d.ts",
+			"import": "./dist/faro.js",
+			"require": "./dist/faro.cjs"
+		},
+		"./package.json": "./package.json"
 	},
+	"files": [
+		"dist",
+		"package.json",
+		"README.md",
+		"LICENSE"
+	],
 	"scripts": {
-		"build:clean": "rm -rf ./dist",
-		"build:esm": "tsc",
-		"build": "bun run build:clean && bun run build:esm",
+		"build": "bun run clean && bun run build:esm && bun run build:cjs && bun run build:types",
+		"build:esm": "bun build ./src/index.ts ./src/faro.ts --outdir=./dist --format=esm --packages=external --target=node --splitting",
+		"build:cjs": "bun build ./src/index.ts ./src/faro.ts --outdir=./dist --format=cjs --packages=external --target=node --outfile-extension=.cjs=.cjs",
+		"build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
+		"clean": "rm -rf dist",
 		"lint": "biome check ./",
 		"lint:fix": "biome check --write ./",
 		"lint:fix:unsafe": "biome check --write --unsafe ./",
@@ -49,11 +70,17 @@
 		"@nestjs-labs/pino-http-extra": "1.5.0",
 		"next-logger": "5.0.2"
 	},
+	"devDependencies": {
+		"bun-types": "1.3.1",
+		"typescript": "5.9.3"
+	},
 	"peerDependencies": {
 		"@types/react": ">=18",
 		"@types/node": ">=20",
-		"react": ">=18",
-		"typescript": ">=5"
+		"react": ">=18"
+	},
+	"engines": {
+		"node": ">=22.0.0"
 	},
 	"packageManager": "bun@1.3.1"
 }
