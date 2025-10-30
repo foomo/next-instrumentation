@@ -4,7 +4,7 @@
 
 # @foomo/next-instrumentation
 
-A Next.js middleware for proxying requests to external services with advanced configuration options.
+Opinionated Next.js instrumentation library.
 
 ## Installation
 

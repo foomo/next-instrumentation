@@ -12,10 +12,10 @@ endef
 # --- Targets -----------------------------------------------------------------
 
 # This allows us to accept extra arguments
-%: .mise
+%: .mise .lefthook
 	@:
 
-.PHONY: .mise .lefthook
+.PHONY: .mise
 # Install dependencies
 .mise: msg := $(br)$(br)Please ensure you have 'mise' installed and activated!$(br)$(br)$$ brew update$(br)$$ brew install mise$(br)$(br)See the documentation: https://mise.jdx.dev/getting-started.html$(br)$(br)
 .mise:
@@ -24,7 +24,7 @@ ifeq (, $(shell command -v mise))
 endif
 	@mise install
 
-.PHONY: .lefthook
+.PHONY:
 # Configure git hooks for lefthook
 .lefthook:
 	@lefthook install
