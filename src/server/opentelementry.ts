@@ -1,5 +1,5 @@
 import { ClientRequest } from 'node:http';
-import { diag, metrics } from '@opentelemetry/api';
+import { metrics } from '@opentelemetry/api';
 import { PrometheusExporter } from '@opentelemetry/exporter-prometheus';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc';
 import { HostMetrics } from '@opentelemetry/host-metrics';
@@ -45,9 +45,9 @@ export const registerOpentelemetry = async () => {
 
 	try {
 		sdk.start();
-		diag.info('OpenTelemetry automatic instrumentation started successfully');
+		console.error('OpenTelemetry automatic instrumentation started successfully');
 	} catch (error) {
-		diag.error(
+		console.error(
 			'Error initializing OpenTelemetry SDK. Your application is not instrumented and will not produce telemetry',
 			error,
 		);
@@ -63,4 +63,5 @@ export const registerOpentelemetry = async () => {
 	['SIGINT', 'SIGTERM'].forEach((signal) => {
 		process.on(signal, async () => await sdk.shutdown());
 	});
+	console.info('Registered opentelemetry');
 };

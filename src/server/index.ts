@@ -5,8 +5,7 @@ export * from './logger';
 export * from './opentelementry';
 
 export const register = async () => {
-	if (process.env.NEXT_RUNTIME === 'nodejs') {
-		await registerLogger();
-		await registerOpentelemetry();
-	}
+	console.info('Registering server modules');
+	await registerLogger();
+	await registerOpentelemetry();
 };
