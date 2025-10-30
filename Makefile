@@ -36,8 +36,7 @@ endif
 check:
 	@bun run build
 	@bun publish --dry-run
-	@node -e "import('@foomo/next-instrumentation/faro').then(console.log)"
-	@node -e "import('@foomo/next-instrumentation').then(console.log)"
+	@node -e "import('@foomo/next-instrumentation/server').then(console.log)"
 
 ### Utils
 

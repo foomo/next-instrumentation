@@ -1,6 +1,6 @@
 {
 	"name": "@foomo/next-instrumentation",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
@@ -18,19 +18,14 @@
 		"access": "public"
 	},
 	"type": "module",
-	"main": "./dist/index.js",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
 	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs"
+		"./client": {
+			"types": "./dist/client/index.d.ts",
+			"import": "./dist/client/index.js"
 		},
-		"./faro": {
-			"types": "./dist/faro.d.ts",
-			"import": "./dist/faro.js",
-			"require": "./dist/faro.cjs"
+		"./server": {
+			"types": "./dist/server/index.d.ts",
+			"import": "./dist/server/index.js"
 		},
 		"./package.json": "./package.json"
 	},
@@ -41,11 +36,11 @@
 		"LICENSE"
 	],
 	"scripts": {
-		"build": "bun run clean && bun run build:esm && bun run build:types",
-		"build:esm": "bun build ./src/index.ts ./src/faro.ts --outdir=./dist --format=esm --packages=external --target=node --splitting",
-		"build:cjs": "bun build ./src/index.ts ./src/faro.ts --outdir=./dist --format=cjs --packages=external --target=node --outfile-extension=.cjs=.cjs",
+		"build": "bun run clean && bun run build:client && bun run build:server && bun run build:types",
+		"build:client": "bun build ./src/client/index.ts --outdir=./dist/client --format=esm --packages=external --sourcemap=linked --target=browser",
+		"build:server": "bun build ./src/server/index.ts --outdir=./dist/server --format=esm --packages=external --sourcemap=linked --target=node",
 		"build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
-		"clean": "rm -rf dist",
+		"clean": "rm -rf ./dist",
 		"lint": "biome check ./",
 		"lint:fix": "biome check --write ./",
 		"lint:fix:unsafe": "biome check --write --unsafe ./",
