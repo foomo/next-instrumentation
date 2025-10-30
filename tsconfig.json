@@ -1,7 +1,12 @@
 {
 	"compilerOptions": {
+		"baseUrl": ".",
 		"outDir": "./dist",
+		"rootDir": "./src",
+
+		// Declarations
 		"declaration": true,
+		"declarationDir": "./dist/types",
 
 		// Enable latest features
 		"lib": ["ESNext", "DOM"],

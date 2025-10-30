@@ -24,10 +24,22 @@ ifeq (, $(shell command -v mise))
 endif
 	@mise install
 
-.PHONY:
+.PHONY: .lefthook
 # Configure git hooks for lefthook
 .lefthook:
 	@lefthook install
+
+### Tasks
+
+.PHONY: check
+# Check publish
+check:
+	@bun run build
+	@bun publish --dry-run
+	@echo "→ Testing import:"
+	@node -e "import('@foomo/next-instrumentation').then(console.log)"
+	@echo "→ Testing require:"
+	@node -e "(async () => {console.log(await import('@foomo/next-instrumentation'))})()"
 
 ### Utils
 
