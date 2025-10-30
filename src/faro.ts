@@ -14,8 +14,8 @@ export interface Faro {
 }
 
 export const useFaro = ({ config, enabled }: Faro) => {
-	if (enabled && !faro.api) {
-		useEffect(() => {
+	useEffect(() => {
+		if (enabled && !faro.api) {
 			try {
 				initializeFaro({
 					instrumentations: [
@@ -31,6 +31,6 @@ export const useFaro = ({ config, enabled }: Faro) => {
 			} catch (e) {
 				console.error('Failed to initialize Faro', e);
 			}
-		}, []);
-	}
+		}
+	}, [config, enabled]);
 };

@@ -1,8 +1,9 @@
 import { registerLogger } from './logger';
 import { registerOpentelemetry } from './opentelementry';
 
-export { registerLogger } from './logger';
-export { registerOpentelemetry } from './opentelementry';
+export * from './logger';
+export * from './opentelementry';
+export * from './faro';
 
 export const register = async () => {
 	await registerLogger();

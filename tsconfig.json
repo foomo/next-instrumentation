@@ -1,10 +1,6 @@
 {
 	"compilerOptions": {
-		"baseUrl": ".",
 		"outDir": "./dist",
-		"rootDir": "./src",
-
-		// Declarations
 		"declaration": true,
 
 		// Enable latest features
@@ -17,6 +13,7 @@
 
 		// Bundler mode
 		"moduleResolution": "bundler",
+		"verbatimModuleSyntax": true,
 		"noEmit": false,
 
 		// Best practices
@@ -29,6 +26,6 @@
 		"noUnusedParameters": false,
 		"noPropertyAccessFromIndexSignature": false
 	},
-	"include": ["src/**/*"],
+	"include": ["src"],
 	"exclude": ["node_modules", "dist"]
 }
