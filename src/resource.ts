@@ -49,7 +49,7 @@ const envAttributesMap: Record<string, string[]> = {
 export const envAttributes = () => {
 	const attr: Record<string, string> = {};
 	for (const key in envAttributesMap) {
-		const value = envAttributesMap[key];
+		const value = envAttributesMap[key] || [];
 		for (const v of value) {
 			if (process.env[v]) {
 				attr[key] = process.env[v];
