@@ -1,0 +1,27 @@
+.*
+*.zip
+*.tar
+*.out
+*.log
+/bin/
+/tmp/
+
+## Git
+!.gitkeep
+!.gitignore
+
+## GitHub
+!.github/
+
+## Editorconfig
+!.editorconfig
+
+## Node
+dist/
+node_modules/
+
+## Mise
+!.mise.toml
+
+## Lefthook
+!.lefthook.yaml

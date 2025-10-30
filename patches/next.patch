@@ -1,0 +1,20 @@
+diff --git a/dist/server/lib/start-server.js b/dist/server/lib/start-server.js
+index 3bd268131a1bebcbd4539f7798dcc1038396dfcf..5ecf64b0105c496c56969ad464824e603893a4d7 100644
+--- a/dist/server/lib/start-server.js
++++ b/dist/server/lib/start-server.js
+@@ -39,6 +39,7 @@ const _appinfolog = require("./app-info-log");
+ const _turbopackwarning = require("../../lib/turbopack-warning");
+ const _trace = require("../../trace");
+ const _ispostpone = require("./router-utils/is-postpone");
++const _logger = require('pino-http')(require('@nestjs-labs/pino-http-extra').getPinoHttpOption());
+ function _interop_require_default(obj) {
+     return obj && obj.__esModule ? obj : {
+         default: obj
+@@ -133,6 +134,7 @@ async function startServer(serverOptions) {
+         throw new Error("Using a self signed certificate is only supported with `next dev`.");
+     }
+     async function requestListener(req, res) {
++				_logger(req, res);
+         try {
+             if (handlersPromise) {
+                 await handlersPromise;
