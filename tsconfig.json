@@ -6,7 +6,6 @@
 
 		// Declarations
 		"declaration": true,
-		"declarationDir": "./dist/types",
 
 		// Enable latest features
 		"lib": ["ESNext", "DOM"],
@@ -18,7 +17,6 @@
 
 		// Bundler mode
 		"moduleResolution": "bundler",
-		"verbatimModuleSyntax": true,
 		"noEmit": false,
 
 		// Best practices
@@ -30,5 +28,7 @@
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
 		"noPropertyAccessFromIndexSignature": false
-	}
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist"]
 }
