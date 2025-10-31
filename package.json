@@ -39,18 +39,7 @@
 	},
 	"scripts": {
 		"build": "bunup",
-		"dev": "bunup --watch",
-		"lint": "biome check .",
-		"lint:fix": "biome check --write .",
-		"lint:fix:unsafe": "biome check --write --unsafe ./",
-		"check": "bun run lint && bun run type-check && bun run test",
-		"prepublishOnly": "bun run check && bun run build",
-		"prereleasehOnly": "bun run check && bun run build",
-		"release": "bumpp --no-push",
-		"test": "bun test",
-		"test:coverage": "bun test --coverage",
-		"test:watch": "bun test --watch",
-		"type-check": "tsc --noEmit"
+		"dev": "bunup --watch"
 	},
 	"dependencies": {
 		"@opentelemetry/api": "1.9.0",
@@ -72,15 +61,11 @@
 		"next-logger": "5.0.2"
 	},
 	"devDependencies": {
-		"@types/bun": "1.3.1",
-		"bumpp": "10.3.1",
-		"bunup": "0.15.12",
-		"typescript": "5.9.3"
+		"@types/bun": "1.3.1"
 	},
 	"peerDependencies": {
 		"@types/react": ">=18",
 		"@types/node": ">=20",
-		"typescript": ">=4.5.0",
 		"react": ">=18"
 	},
 	"peerDependenciesMeta": {
@@ -88,9 +73,6 @@
 			"optional": true
 		},
 		"@types/node": {
-			"optional": true
-		},
-		"typescript": {
 			"optional": true
 		},
 		"react": {

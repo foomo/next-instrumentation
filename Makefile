@@ -32,17 +32,68 @@ endif
 ### Tasks
 
 .PHONY: check
-# Check publish
-check:
-	@bun run build
-	@bun publish --dry-run
-	@node -e "import('@foomo/next-instrumentation/server').then(console.log)"
+## Run all checks
+check: lint type-check test
+	@biome check .
+
+.PHONY: lint
+## Run biome lint
+lint:
+	@biome check .
+
+.PHONY: lint.fix
+## Run biome lint fix
+lint.fix:
+	@biome check --write .
+
+.PHONY: lint.fix.unsafe
+## Run biome lint fix unsafe
+lint.fix.unsafe:
+	@biome check --write --unsafe .
+
+.PHONY: type-check
+## Run tsc type-check
+type-check:
+	@tsc --noEmit
+
+.PHONY: test
+## Run tests
+test:
+	@bun test --coverage
+
+.PHONY: test.watch
+## Run tests & watch
+test.watch:
+	@bun test --watch
+
+.PHONY: build
+## Build sources
+build:
+	@bunup
+
+### Publish
+
+.PHONY: bump
+## Bump version interactively
+bump: check
+	@bumpp --no-push
+
+.PHONY: bump.push
+## Bump version interactively & push
+bump.push: check
+	@bumpp
+
+.PHONY: publish
+# Publish release
+publish: check
+	@bun publish
 
 ### Utils
 
 .PHONY: help
 ## Show help text
 help:
+	@echo ""
 	@echo "Next Proxy Middleware\n"
 	@echo "Usage:\n  make [task]"
 	@awk '{ \

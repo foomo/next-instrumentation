@@ -1,1 +1,2 @@
-export * from './faro'
+export * from './components'
+export * from './lib'
