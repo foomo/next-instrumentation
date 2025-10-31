@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "ES2023",
+		"target": "ES2020",
 		"module": "Preserve",
 		"moduleDetection": "force",
 
@@ -8,6 +8,7 @@
 		"allowImportingTsExtensions": true,
 		"verbatimModuleSyntax": true,
 		"noEmit": true,
+		"jsx": "preserve",
 
 		"strict": true,
 		"skipLibCheck": true,

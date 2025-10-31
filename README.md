@@ -9,18 +9,25 @@ Opinionated Next.js instrumentation library.
 ## Installation
 
 ```bash
-npm install @foomo/next-instrumentation
+npm install -S @foomo/next-instrumentation
 ```
 
 ## Usage
 
-Import the middleware and configuration type in your Next.js middleware file:
+
+
+Create a `instrumentation.ts` file in your project root and past the following code:
 
 ```typescript
-import {
-  createProxyMiddleware,
-  DevProxyConfig,
-} from "@foomo/next-instrumentation";
+export async function register() {
+	if (process.env.NEXT_RUNTIME === 'nodejs') {
+		// load dependencies
+		await require('pino');
+		await require('next-logger');
+		// register instrumentation
+		await (await import('@foomo/next-instrumentation/server')).register();
+	}
+}
 ```
 
 ## Configuration
