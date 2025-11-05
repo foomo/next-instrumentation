@@ -85,7 +85,7 @@ bump.push: check
 
 .PHONY: publish
 # Publish release
-publish: check
+publish: check bump
 	@bun publish
 
 ### Utils

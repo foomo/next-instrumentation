@@ -14,11 +14,36 @@ npm install -S @foomo/next-instrumentation
 
 ## Usage
 
+Copy the `patches/next.patch` file to your project and use your package manager to apply it.
 
+#### PNPM
 
-Create a `instrumentation.ts` file in your project root and past the following code:
+```json5
+// package.json
+{
+	"pnpm": {
+		"patchedDependencies": {
+			"next": "path/to/next.patch"
+		}
+	}
+}
+```
+
+Add the `@bestbytes/next-instrumentation` package to your `dependencies`:
+
+```json5
+// package.json
+{
+	"dependencies": {
+		"@foomo/next-instrumentation": "latest"
+	}
+}
+```
+
+Create a `instrumentation.ts` file in your nextjs source directory:
 
 ```typescript
+// instrumentation.ts
 export async function register() {
 	if (process.env.NEXT_RUNTIME === 'nodejs') {
 		// load dependencies
@@ -30,58 +55,22 @@ export async function register() {
 }
 ```
 
-## Configuration
+Init faro on your pages:
 
-The `DevProxyConfig` type defines the following options:
+```tsx
+// src/app/page.tsx
+import { useFaro } from '@foomo/next-instrumentation/client';
 
-```typescript
-export type DevProxyConfig = {
-  debug?: boolean; // Enable debug logging
-  disable?: boolean; // Disable the proxy entirely
-  remoteUrl: string | ((request: NextRequest) => string); // Remote URL or function to generate it
-  allowResponseCompression?: boolean; // Allow response compression (default: false)
-  overrideHostHeader?: boolean; // Override host header (default: true)
-  overrideCookieDomain?: false | string; // Domain to use for cookies or false to disable
-  basicAuth?: {
-    authHeader: string; // Authorization header value
-  };
-  cfTokenAuth?: {
-    clientId: string;
-    clientSecret: string;
-  };
-};
-```
+export default async function Page({ params }: { params: {} }) {
+	useFaro({
+		url: "https://faro.example.com/collect",
+		app: {
+			name: "your-app",
+		},
+	})
 
-## Example
-
-Here's an example of how to use the middleware in your `middleware.ts` file:
-
-```typescript
-import {
-  createProxyMiddleware,
-  DevProxyConfig,
-} from "@foomo/next-instrumentation";
-
-const proxyConfig: DevProxyConfig = {
-  remoteUrl: "https://api.example.com",
-  basicAuth: {
-    authHeader: "Basic abc123==",
-  },
-  overrideCookieDomain: "example.com",
-};
-
-export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname.match("^/(api|webhooks)/")) {
-    return proxyMiddleware(request);
-  }
-  return request;
+	return (</>)
 }
-
-export const config = {
-  matcher: ["/api/:path*"],
-};
-
-const proxyMiddleware = createProxyMiddleware(proxyConfig);
 ```
 
 ## Contributing
