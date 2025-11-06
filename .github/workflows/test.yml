@@ -24,14 +24,14 @@ jobs:
 
       - name: Run install
         run: |
-          bun install
+          make install
           git diff --exit-code
 
       - name: Run lint
-        run: bun run lint
+        run: make lint
 
       - name: Run type check
-        run: bun run type-check
+        run: make type-check
 
-      #- name: Run test
-      #  run: bun test
+      - name: Run test
+        run: make test
