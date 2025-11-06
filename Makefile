@@ -31,6 +31,11 @@ endif
 
 ### Tasks
 
+.PHONY: install
+## Run bun install
+install:
+	@bun install
+
 .PHONY: check
 ## Run all checks
 check: lint type-check test
@@ -94,7 +99,7 @@ publish: check bump
 ## Show help text
 help:
 	@echo ""
-	@echo "Next Proxy Middleware\n"
+	@echo "Next Instrumentation\n"
 	@echo "Usage:\n  make [task]"
 	@awk '{ \
 		if($$0 ~ /^### /){ \
