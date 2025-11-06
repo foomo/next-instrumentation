@@ -36,6 +36,16 @@ endif
 install:
 	@bun install
 
+.PHONY: build
+## Run bunup
+build:
+	@bunup
+
+.PHONY: build.watch
+## Run bunup --watch
+build.watch:
+	@bunup --watch
+
 .PHONY: check
 ## Run all checks
 check: lint type-check test
@@ -70,11 +80,6 @@ test:
 ## Run tests & watch
 test.watch:
 	@bun test --watch
-
-.PHONY: build
-## Build sources
-build:
-	@bunup
 
 ### Publish
 

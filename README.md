@@ -8,7 +8,7 @@ Opinionated Next.js instrumentation library.
 
 ## Installation
 
-```bash
+```shell
 # npm
 npm install @foomo/next-instrumentation
 # yarn

@@ -37,10 +37,6 @@
 		},
 		"./package.json": "./package.json"
 	},
-	"scripts": {
-		"build": "bunup",
-		"dev": "bunup --watch"
-	},
 	"dependencies": {
 		"@opentelemetry/api": "1.9.0",
 		"@opentelemetry/instrumentation-http": "0.207.0",
@@ -62,13 +58,11 @@
 	},
 	"devDependencies": {
 		"@types/bun": "1.3.1",
-		"bunup": "0.15.13",
-		"bumpp": "10.3.1",
-		"typescript": "5.9.3"
+		"bunup": "0.15.13"
 	},
 	"peerDependencies": {
 		"@types/react": ">=18",
-		"@types/node": ">=20",
+		"@types/node": ">=22",
 		"react": ">=18"
 	},
 	"peerDependenciesMeta": {
