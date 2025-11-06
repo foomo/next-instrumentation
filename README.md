@@ -9,7 +9,14 @@ Opinionated Next.js instrumentation library.
 ## Installation
 
 ```bash
-npm install -S @foomo/next-instrumentation
+# npm
+npm install @foomo/next-instrumentation
+# yarn
+yarn add @foomo/next-instrumentation
+# pnpm
+pnpm install -S @foomo/next-instrumentation
+# bun
+bun add @foomo/next-instrumentation
 ```
 
 ## Usage
@@ -29,18 +36,7 @@ Copy the `patches/next.patch` file to your project and use your package manager 
 }
 ```
 
-Add the `@bestbytes/next-instrumentation` package to your `dependencies`:
-
-```json5
-// package.json
-{
-	"dependencies": {
-		"@foomo/next-instrumentation": "latest"
-	}
-}
-```
-
-Create a `instrumentation.ts` file in your nextjs source directory:
+Create a `instrumentation.ts` file in your `src` directory:
 
 ```typescript
 // instrumentation.ts
@@ -81,6 +77,6 @@ Contributions are welcome! Please read the [contributing guide](CONTRIBUTING.md)
 
 ## License
 
-Distributed under MIT License, please see license file within the code for more details.
+Distributed under MIT License, please read the [license file](LICENSE) for more details.
 
 _Made with ♥ [foomo](https://www.foomo.org) by [bestbytes](https://www.bestbytes.com)_
