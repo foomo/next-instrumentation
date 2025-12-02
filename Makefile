@@ -48,7 +48,7 @@ build.watch:
 
 .PHONY: check
 ## Run all checks
-check: lint type-check test
+check: lint type-check test build
 	@biome check .
 
 .PHONY: lint
