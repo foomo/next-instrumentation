@@ -4,7 +4,7 @@ import { getEnvBoolean } from './utils.ts'
 
 export const registerPyroscope = (): void => {
 	if (
-		getEnvBoolean('OTEL_ENABLED') ||
+		!getEnvBoolean('OTEL_ENABLED') ||
 		!process.env.PYROSCOPE_ADHOC_SERVER_ADDRESS
 	)
 		return
@@ -39,11 +39,20 @@ export const registerPyroscope = (): void => {
 		tags[key] = value
 	}
 
-	Pyroscope.init({
+	const config = {
 		serverAddress: process.env.PYROSCOPE_ADHOC_SERVER_ADDRESS,
 		appName: name,
 		tags: tags,
-	})
+	}
 
+	console.debug(JSON.stringify(config))
+
+	Pyroscope.init(config)
 	Pyroscope.start()
+
+	// handle shutdown
+	;['SIGINT', 'SIGTERM'].forEach(async (signal) => {
+		await Pyroscope.stop()
+	})
+	console.info('Pyroscope started successfully')
 }
