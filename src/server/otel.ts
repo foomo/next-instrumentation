@@ -42,18 +42,13 @@ export const registerOtel = (): void => {
 
 	try {
 		sdk.start()
-		console.error(
-			'OpenTelemetry automatic instrumentation started successfully',
-		)
-	} catch (error) {
-		console.error(
-			'Error initializing OpenTelemetry SDK. Your application is not instrumented and will not produce telemetry',
-			error,
-		)
+
+		;['SIGINT', 'SIGTERM'].forEach((signal) => {
+			process.on(signal, async () => await sdk.shutdown())
+		})
+
+		console.info('OpenTelemetry instrumentation started successfully')
+	} catch (err) {
+		console.error({ err: err }, 'Error initializing OpenTelemetry SDK')
 	}
-	// handle shutdown
-	;['SIGINT', 'SIGTERM'].forEach((signal) => {
-		process.on(signal, async () => await sdk.shutdown())
-	})
-	console.info('Registered opentelemetry')
 }
