@@ -71,7 +71,7 @@ export default async function Page({ params }: { params: {} }) {
 
 ## Contributing
 
-Contributions are welcome! Please read the [contributing guide](CONTRIBUTING.md).
+Contributions are welcome! Please read the [contributing guide](docs/CONTRIBUTING.md).
 
 ![Contributors](https://contributors-table.vercel.app/image?repo=foomo/next-instrumentation&width=50&columns=15)
 

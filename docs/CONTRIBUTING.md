@@ -1,31 +1,18 @@
-# Contributing to @foomo/next-instrumentation
+# Contributing
 
 Thank you for your interest in contributing to our project! This guide will help you get started with the development process.
 
-## Development Setup
-
-### Prerequisites
-
-- Bun installed on your system
-
-### Getting Started
-
-1. Fork the repository
-2. Clone your fork: `git clone https://github.com/foomo/next-instrumentation.git`
-3. Navigate to the project directory: `cd next-instrumentation`
-4. Install dependencies: `mise trust && make install`
-5. Start development: `bun run dev`
-
 ## Development Workflow
 
-1. Create a new branch: `git checkout -b feature/your-feature-name`
-2. Make your changes
-3. Check and fix code style and formatting issues: `make lint.fix`
-4. Run tests: `make test`
-5. Build the project: `make build`
-6. Commit your changes using the conventions below
-7. Push your branch to your fork
-8. Open a pull request
+1. Fork this repository
+2. Create a new branch: `git checkout -b feature/your-feature-name`
+3. Make your changes
+4. Check and fix code style and formatting issues: `make lint`
+5. Run checks: `make test`
+6. Build the project: `make build`
+7. Commit your changes using the conventions below
+8. Push your branch to your fork
+9. Open a pull request
 
 ## Commit Message Conventions
 
@@ -47,12 +34,10 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/) for clear
 3. Address any feedback from code reviews
 4. Once approved, your PR will be merged
 
-## Code of Conduct
+## Code of Conduct & Security
 
-Please be respectful and constructive in all interactions within our community.
+Please be respectful and constructive in all interactions within our community and follow the [CODE_OF_CONDUCT](docs/CODE_OF_CONDUCT.md) and [SECURITY](docs/SECURITY.md) guidelines.
 
 ## Questions?
 
 If you have any questions, please [open an issue](https://github.com/foomo/next-instrumentation/issues/new) for discussion.
-
-Thank you for contributing to @foomo/next-instrumentation!

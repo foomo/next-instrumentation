@@ -15,6 +15,7 @@
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedIndexedAccess": true,
 		"noImplicitOverride": true,
+		"noImplicitAny": false,
 
 		"declaration": true,
 		"isolatedDeclarations": true,
