@@ -51,8 +51,8 @@ export const registerPyroscope = (): void => {
 	Pyroscope.start()
 
 	// handle shutdown
-	;['SIGINT', 'SIGTERM'].forEach(async (signal) => {
-		await Pyroscope.stop()
+	;['SIGINT', 'SIGTERM'].forEach((signal) => {
+		process.on(signal, async () => await Pyroscope.stop())
 	})
 	console.info('Pyroscope started successfully')
 }
